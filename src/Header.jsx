@@ -1,11 +1,11 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, SafeAreaView} from 'react-native'
 
 const Header = () => {
     return (
-        <View style={styles.header} >
+        <SafeAreaView style={styles.header} >
             <Text style= {styles.text}>Header</Text>
-        </View>
+        </SafeAreaView>
     )
 }
 
@@ -14,7 +14,7 @@ export default Header
 const styles = StyleSheet.create({
     header: {
         backgroundColor: "gray",
-        height: 80,
+        height: 50,
         alignItems: "center",
         justifyContent: "center",
     },

@@ -1,14 +1,27 @@
-import React from 'react'
-import { StyleSheet, Text, SafeAreaView, TextInput, Button} from 'react-native'
+import React, { useState} from 'react'
+import { StyleSheet, Text, SafeAreaView, TextInput, Button, Image, Text} from 'react-native'
 
 export default function Main() {
-    return (
+
+const [movieName, setMovieName] = useState("")
+const [movie, setMovie] = useState(null)
+
+const handleSearch = () => {
+    alert(movieName)
+}
+
+
+ return (
         <SafeAreaView style={styles.main} >
-            <Text style= {styles.text}>Main</Text>
+            
             <SafeAreaView style={styles.search}>
-                <TextInput style={styles.input} />
-                <Button title="Buscar" style={styles.button} />
+                <TextInput value={movieName}
+                onChangeText={setMovieName} 
+                style={styles.input} />
+                <Button  onPress={handleSearch} title="Buscar" style={styles.button} />
             </SafeAreaView>
+            {movie && <Image source={require ("../assets/titanic.jpg")} style={styles.image} />}
+            {!movie && <Text>Busque una pelicula</Text>}
         </SafeAreaView>
     )
 }
@@ -16,23 +29,33 @@ export default function Main() {
 const styles = StyleSheet.create({
     main: {
         flex: 1,
-        backgroundColor: "yellow",
         alignItems: "center",
-        justifyContent: "center",
-    },
-    text: {
-        color: "blue",
-        fontSize: 20
-    },
+        padding: 20,
+        marginTop: 20,
+       
+     },
     input: {
 width: 200,
-backgroundColor: "white"
+borderColor: "blue",
+borderRadius: 15,
+borderWidth: 2,
+marginRight: 5,
+marginLeft: 5,
+paddingHorizontal: 10
     },
     button: {
-
+        backgroundColor: "red"
     },
     search: {
-flexDirection: "row"
+flexDirection: "row",
+justifyContent: "center",
+marginBottom: 20
+
+    },
+    image: {
+        width: 300,
+        height: 300,
+        resizeMode: "cover"
     }
 
 })
